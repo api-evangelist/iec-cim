@@ -1,0 +1,20 @@
+aid: iec-cim
+url: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/apis.yml
+apis:
+- aid: iec-cim:iec-cim-api
+  name: IEC CIM (61968/61970) Utility Standards API
+  tags:
+  - Utilities
+  - Energy
+  - Smart Meter
+  - CIM
+  - XML
+  - AMI
+  image: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
+  humanURL: https://www.iec.ch/
+  baseURL: https://ami-gateway.utility.example.com/cim
+  properties:
+  - url: https://www.iec.ch/
+    type: Documentation
+  description: >-
+    The IEC Common Information Model (CIM) standards (61968/61970) define data models for electricity distribution and transmission. CIM XML APIs from AMI head-end systems provide smart meter readings, interval data, usage points, and demand response signals for utility grid operations.
