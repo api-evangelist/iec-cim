@@ -1,0 +1,598 @@
+openapi: 3.1.0
+info:
+  title: IEC CIM 61968 Distribution Management API
+  description: >-
+    REST API for distribution utility systems based on IEC 61968 Common Information
+    Model (CIM) standards. Provides access to network assets, outage management,
+    customer information, meter reading, and work management data using CIM-compliant
+    resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces
+    for distribution management systems (DMS) integration.
+  version: 1.0.0
+  contact:
+    name: CIM User Group
+    url: https://cimug.ucaiug.org/
+  license:
+    name: IEC License
+    url: https://www.iec.ch/
+externalDocs:
+  description: IEC CIM User Group
+  url: https://cimug.ucaiug.org/
+
+servers:
+  - url: https://dms-gateway.utility.example.com/cim/61968/v1
+    description: Distribution Management System CIM API gateway
+
+security:
+  - OAuth2: []
+  - BasicAuth: []
+
+tags:
+  - name: Network Assets
+    description: Distribution network equipment – transformers, switches, lines, conductors
+  - name: Metering
+    description: Meters and interval readings (IEC 61968-9 AMI)
+  - name: Outages
+    description: Outage events and management
+  - name: Customers
+    description: Customer service agreements and locations
+  - name: Work Orders
+    description: Maintenance and construction work orders
+
+paths:
+  /assets:
+    get:
+      operationId: listAssets
+      summary: List network assets
+      description: Returns distribution network assets including transformers, switches, sectionalizers, and overhead/underground lines. Supports filtering by asset type, substation, and location.
+      tags: [Network Assets]
+      parameters:
+        - name: assetType
+          in: query
+          schema:
+            type: string
+            enum: [PowerTransformer, Switch, Breaker, Recloser, Capacitor, Conductor, ACLineSegment]
+        - name: substationId
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            maximum: 1000
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Asset list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetList'
+
+  /assets/{mRID}:
+    get:
+      operationId: getAsset
+      summary: Get asset by mRID
+      description: Returns a specific network asset identified by its CIM Master Resource Identifier (mRID).
+      tags: [Network Assets]
+      parameters:
+        - name: mRID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: CIM Master Resource Identifier (UUID)
+      responses:
+        '200':
+          description: Asset returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '404':
+          description: Asset not found
+
+  /meters:
+    get:
+      operationId: listMeters
+      summary: List meters
+      description: Returns smart meters and AMI endpoints in the distribution network. Supports filtering by circuit, substation, and meter type.
+      tags: [Metering]
+      parameters:
+        - name: substationId
+          in: query
+          schema:
+            type: string
+        - name: feeder
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Meter list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterList'
+
+  /meters/{mRID}/readings:
+    get:
+      operationId: getMeterReadings
+      summary: Get meter readings
+      description: Returns meter readings for a specific meter. Supports date range filtering and interval selection (15-minute, hourly, daily).
+      tags: [Metering]
+      parameters:
+        - name: mRID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: startTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Reading period start (ISO 8601)
+        - name: endTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Reading period end
+        - name: readingType
+          in: query
+          schema:
+            type: string
+            enum: [ENERGY_KWH, DEMAND_KW, VOLTAGE, CURRENT, POWER_FACTOR]
+      responses:
+        '200':
+          description: Meter readings returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterReadingList'
+        '404':
+          description: Meter not found
+
+  /outages:
+    get:
+      operationId: listOutages
+      summary: List outage events
+      description: Returns current and historical outage events including cause, affected customers, and restoration status.
+      tags: [Outages]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [Active, Restored, Cancelled]
+        - name: startTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Outage list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutageList'
+
+  /outages/{mRID}:
+    get:
+      operationId: getOutage
+      summary: Get outage details
+      description: Returns detailed information about a specific outage event including affected assets, customers, and restoration actions.
+      tags: [Outages]
+      parameters:
+        - name: mRID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Outage returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outage'
+        '404':
+          description: Outage not found
+
+  /customers:
+    get:
+      operationId: listCustomers
+      summary: List utility customers
+      description: Returns utility customer accounts and service agreements. Supports search by name, address, or account number.
+      tags: [Customers]
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+          description: Search query (name or address)
+        - name: accountNumber
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Customer list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerList'
+
+  /work-orders:
+    get:
+      operationId: listWorkOrders
+      summary: List work orders
+      description: Returns distribution maintenance and construction work orders.
+      tags: [Work Orders]
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [PENDING, ISSUED, INPROGRESS, COMPLETED, CANCELLED]
+        - name: workType
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Work orders returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkOrderList'
+
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.utility.example.com/oauth/token
+          scopes:
+            cim.read: Read CIM data
+            cim.write: Write CIM data
+    BasicAuth:
+      type: http
+      scheme: basic
+
+  schemas:
+    Asset:
+      type: object
+      description: CIM IdentifiedObject representing a distribution network asset
+      properties:
+        mRID:
+          type: string
+          format: uuid
+          description: Master Resource Identifier (CIM UUID)
+        name:
+          type: string
+          description: Asset name
+        aliasName:
+          type: string
+        description:
+          type: string
+        assetType:
+          type: string
+          description: CIM asset type class name
+        location:
+          $ref: '#/components/schemas/Location'
+        inService:
+          type: boolean
+        installationDate:
+          type: string
+          format: date
+        ratedVoltage:
+          type: number
+          description: Rated voltage in volts
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
+
+    AssetList:
+      type: object
+      properties:
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+
+    Meter:
+      type: object
+      description: CIM Meter – an AMI or electromechanical meter endpoint
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serialNumber:
+          type: string
+        utcNumber:
+          type: string
+          description: Utility tracking number
+        meterType:
+          type: string
+          enum: [AMI, AMR, ELECTROMECHANICAL]
+        communicationMethod:
+          type: string
+          enum: [PLC, RF_MESH, CELLULAR, OPTICAL]
+        serviceLocation:
+          $ref: '#/components/schemas/Location'
+        usagePoint:
+          $ref: '#/components/schemas/UsagePoint'
+        installationDate:
+          type: string
+          format: date
+        lastCommunication:
+          type: string
+          format: date-time
+
+    MeterList:
+      type: object
+      properties:
+        meters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        total:
+          type: integer
+
+    MeterReading:
+      type: object
+      description: CIM MeterReading – a set of readings from a meter for a time period
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        meterMRID:
+          type: string
+          format: uuid
+        readingType:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+        unit:
+          type: string
+          description: Unit of measure (kWh, kW, V, A)
+        multiplier:
+          type: string
+          description: Metric multiplier (k, M, G, etc.)
+        quality:
+          type: string
+          enum: [ACTUAL, ESTIMATED, SUBSTITUTED, INTERPOLATED]
+
+    MeterReadingList:
+      type: object
+      properties:
+        meterMRID:
+          type: string
+          format: uuid
+        readings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterReading'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+
+    Outage:
+      type: object
+      description: CIM Outage event
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          type: string
+          enum: [Active, Restored, Cancelled]
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        cause:
+          type: string
+        affectedCustomers:
+          type: integer
+        location:
+          $ref: '#/components/schemas/Location'
+        affectedAssets:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssetRef'
+
+    OutageList:
+      type: object
+      properties:
+        outages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outage'
+        total:
+          type: integer
+
+    Customer:
+      type: object
+      description: CIM Customer – utility customer record
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        accountNumber:
+          type: string
+        customerType:
+          type: string
+          enum: [RESIDENTIAL, COMMERCIAL, INDUSTRIAL, AGRICULTURAL]
+        serviceLocation:
+          $ref: '#/components/schemas/Location'
+        email:
+          type: string
+        phone:
+          type: string
+
+    CustomerList:
+      type: object
+      properties:
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        total:
+          type: integer
+
+    WorkOrder:
+      type: object
+      description: CIM Work – a work order for utility field operations
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        workOrderNumber:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [PENDING, ISSUED, INPROGRESS, COMPLETED, CANCELLED]
+        workType:
+          type: string
+        priority:
+          type: string
+          enum: [EMERGENCY, HIGH, ROUTINE, LOW]
+        scheduledStart:
+          type: string
+          format: date-time
+        actualStart:
+          type: string
+          format: date-time
+        completedDateTime:
+          type: string
+          format: date-time
+        location:
+          $ref: '#/components/schemas/Location'
+        assignedCrew:
+          type: string
+
+    WorkOrderList:
+      type: object
+      properties:
+        workOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrder'
+        total:
+          type: integer
+
+    Location:
+      type: object
+      description: CIM Location with coordinates
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
+
+    UsagePoint:
+      type: object
+      description: CIM UsagePoint – point of delivery for a customer
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serviceKind:
+          type: string
+          enum: [ELECTRICITY, GAS, WATER, HEAT]
+        phaseCode:
+          type: string
+
+    AssetRef:
+      type: object
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assetType:
+          type: string

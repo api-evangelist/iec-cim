@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/iec-cim/json-schema/iec-cim-asset-schema.json",
+  "title": "IEC CIM Asset",
+  "description": "JSON Schema for an IEC CIM (Common Information Model) network asset as defined in IEC 61968/61970. Represents a physical piece of electrical equipment in a distribution or transmission network.",
+  "type": "object",
+  "properties": {
+    "mRID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Master Resource Identifier — globally unique UUID as defined by IEC 61970-301"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name is any free human readable and possibly non-unique text naming the object."
+    },
+    "aliasName": {
+      "type": "string",
+      "description": "The aliasName is free text human readable name of the object alternative to IdentifiedObject.name."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description is a free human readable text describing or naming the object."
+    },
+    "assetType": {
+      "type": "string",
+      "enum": [
+        "PowerTransformer",
+        "Switch",
+        "Breaker",
+        "Recloser",
+        "Sectionalizer",
+        "Capacitor",
+        "Conductor",
+        "ACLineSegment",
+        "BusbarSection",
+        "EnergyConsumer",
+        "EnergySource",
+        "GeneratingUnit",
+        "Feeder",
+        "Substation"
+      ],
+      "description": "CIM class name of the asset type"
+    },
+    "location": {
+      "$ref": "#/$defs/Location"
+    },
+    "inService": {
+      "type": "boolean",
+      "description": "Whether the asset is currently in service"
+    },
+    "installationDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the asset was installed"
+    },
+    "ratedVoltage": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Rated voltage in volts"
+    },
+    "baseVoltage": {
+      "type": "number",
+      "description": "Nominal base voltage in kV for the asset's voltage level"
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "serialNumber": {
+      "type": "string"
+    },
+    "lot": {
+      "type": "string"
+    },
+    "criticalityConfig": {
+      "type": "string",
+      "description": "Criticality rating for asset management prioritization"
+    }
+  },
+  "required": ["mRID", "name", "assetType"],
+  "$defs": {
+    "Location": {
+      "type": "object",
+      "description": "CIM Location – geographic location of the asset",
+      "properties": {
+        "mRID": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "addressGeneral": {
+          "type": "string",
+          "description": "Free text address or location description"
+        },
+        "positionPoints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/PositionPoint" }
+        }
+      }
+    },
+    "PositionPoint": {
+      "type": "object",
+      "description": "CIM PositionPoint – a single geographic coordinate pair",
+      "properties": {
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Zero-based sequence number of this point in an ordered set"
+        },
+        "xPosition": {
+          "type": "string",
+          "description": "X axis position (typically longitude in WGS84)"
+        },
+        "yPosition": {
+          "type": "string",
+          "description": "Y axis position (typically latitude in WGS84)"
+        },
+        "zPosition": {
+          "type": "string",
+          "description": "Z axis position (elevation, if applicable)"
+        }
+      },
+      "required": ["xPosition", "yPosition"]
+    }
+  }
+}

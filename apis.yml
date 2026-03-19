@@ -18,6 +18,8 @@ apis:
     type: Documentation
   - url: https://cimug.ucaiug.org/
     type: Reference
+  - url: openapi/iec-cim-61968-distribution-openapi.yml
+    type: OpenAPI
   description: >-
     The IEC CIM 61968 standard defines interfaces for distribution management systems (DMS), enabling integration of outage management, network management, meter reading, and work management systems using CIM XML message exchange.
 
@@ -89,6 +91,12 @@ common:
     type: GitHub Organization
   - url: https://github.com/cimug-org
     type: Developer Tools
+  - url: openapi/iec-cim-61968-distribution-openapi.yml
+    type: OpenAPI
+  - url: json-schema/iec-cim-asset-schema.json
+    type: JSONSchema
+  - url: json-ld/iec-cim-context.jsonld
+    type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com

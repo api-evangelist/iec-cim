@@ -1,0 +1,111 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cim": "http://iec.ch/TC57/CIM100#",
+    "schema": "https://schema.org/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dct": "http://purl.org/dc/terms/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+
+    "IdentifiedObject": {
+      "@id": "cim:IdentifiedObject",
+      "@type": "@id"
+    },
+    "Asset": {
+      "@id": "cim:Asset",
+      "@type": "@id"
+    },
+    "PowerTransformer": {
+      "@id": "cim:PowerTransformer",
+      "@type": "@id"
+    },
+    "Switch": {
+      "@id": "cim:Switch",
+      "@type": "@id"
+    },
+    "ACLineSegment": {
+      "@id": "cim:ACLineSegment",
+      "@type": "@id"
+    },
+    "Meter": {
+      "@id": "cim:Meter",
+      "@type": "@id"
+    },
+    "UsagePoint": {
+      "@id": "cim:UsagePoint",
+      "@type": "@id"
+    },
+    "MeterReading": {
+      "@id": "cim:MeterReading",
+      "@type": "@id"
+    },
+    "Customer": {
+      "@id": "cim:Customer",
+      "@type": "@id"
+    },
+    "Location": {
+      "@id": "cim:Location",
+      "@type": "@id"
+    },
+    "Outage": {
+      "@id": "cim:Outage",
+      "@type": "@id"
+    },
+
+    "mRID": "cim:IdentifiedObject.mRID",
+    "name": "cim:IdentifiedObject.name",
+    "aliasName": "cim:IdentifiedObject.aliasName",
+    "description": "cim:IdentifiedObject.description",
+    "assetType": "cim:Asset.type",
+    "inService": "cim:Equipment.inService",
+    "installationDate": {
+      "@id": "cim:Asset.installationDate",
+      "@type": "xsd:date"
+    },
+    "ratedVoltage": {
+      "@id": "cim:ConductingEquipment.ratedU",
+      "@type": "xsd:decimal"
+    },
+    "serialNumber": "cim:Asset.serialNumber",
+    "manufacturer": "cim:Asset.manufacturer",
+    "model": "cim:AssetInfo.product",
+
+    "location": {
+      "@id": "cim:PowerSystemResource.location",
+      "@type": "@id"
+    },
+    "positionPoints": {
+      "@id": "cim:Location.PositionPoints",
+      "@container": "@list"
+    },
+    "xPosition": "cim:PositionPoint.xPosition",
+    "yPosition": "cim:PositionPoint.yPosition",
+
+    "serialNumber_meter": "cim:EndDevice.serialNumber",
+    "meterType": "cim:Meter.readingType",
+
+    "value": "cim:Reading.value",
+    "timeStamp": {
+      "@id": "cim:MeterReading.valuesIntervalBlock",
+      "@type": "xsd:dateTime"
+    },
+    "unit": "cim:ReadingType.unit",
+    "quality": "cim:Reading.qualityFlags",
+
+    "accountNumber": "cim:Customer.pucNumber",
+    "customerType": "cim:Customer.customerKind",
+
+    "startTime": {
+      "@id": "cim:Outage.activeStart",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "cim:Outage.activeEnd",
+      "@type": "xsd:dateTime"
+    },
+    "affectedCustomers": "cim:Outage.affectedCustomerCount",
+    "status": "cim:Outage.statusKind"
+  }
+}
