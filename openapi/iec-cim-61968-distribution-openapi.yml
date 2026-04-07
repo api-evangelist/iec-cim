@@ -27,14 +27,14 @@ security:
   - BasicAuth: []
 
 tags:
-  - name: Network Assets
-    description: Distribution network equipment – transformers, switches, lines, conductors
-  - name: Metering
-    description: Meters and interval readings (IEC 61968-9 AMI)
-  - name: Outages
-    description: Outage events and management
   - name: Customers
     description: Customer service agreements and locations
+  - name: Metering
+    description: Meters and interval readings (IEC 61968-9 AMI)
+  - name: Network Assets
+    description: Distribution network equipment – transformers, switches, lines, conductors
+  - name: Outages
+    description: Outage events and management
   - name: Work Orders
     description: Maintenance and construction work orders
 

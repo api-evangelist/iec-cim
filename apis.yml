@@ -1,18 +1,16 @@
 aid: iec-cim
-url: 
-  https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/apis.yml
 apis:
   - aid: iec-cim:iec-cim-61968-distribution-api
     name: IEC CIM 61968 Distribution Management API
     tags:
-      - Utilities
-      - Energy
-      - Distribution
       - CIM
-      - XML
+      - Distribution
+      - Energy
       - Smart Grid
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
+      - Utilities
+      - XML
+    image: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
     humanURL: https://www.iec.ch/
     baseURL: https://ami-gateway.utility.example.com/cim/61968
     properties:
@@ -30,14 +28,13 @@ apis:
   - aid: iec-cim:iec-cim-61970-ems-api
     name: IEC CIM 61970 Energy Management API
     tags:
-      - Utilities
+      - CIM
+      - EMS
       - Energy
       - Transmission
-      - CIM
+      - Utilities
       - XML
-      - EMS
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
+    image: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
     humanURL: https://www.iec.ch/
     baseURL: https://ems-gateway.utility.example.com/cim/61970
     properties:
@@ -53,15 +50,14 @@ apis:
   - aid: iec-cim:iec-cim-ami-smart-meter-api
     name: IEC CIM AMI Smart Meter API
     tags:
-      - Utilities
-      - Energy
-      - Smart Meter
       - AMI
       - CIM
-      - XML
+      - Energy
       - Metering
-    image: 
-      https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
+      - Smart Meter
+      - Utilities
+      - XML
+    image: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
     humanURL: https://www.iec.ch/
     baseURL: https://ami-gateway.utility.example.com/cim
     properties:
@@ -84,8 +80,7 @@ common:
     energy management, and advanced metering infrastructure. The CIM User Group (CIMug)
     maintains open-source tools including CIMTool for working with CIM profiles and
     data exchange.
-  image: 
-    https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
+  image: https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/image.png
   tags:
     - Utilities
     - Energy
