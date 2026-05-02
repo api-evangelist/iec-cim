@@ -1,10 +1,21 @@
-# Unknown (iec-cim)
+# IEC CIM - Common Information Model (iec-cim)
+IEC Common Information Model (CIM) is an international standard developed by the International Electrotechnical Commission for representing electrical power system data and facilitating data exchange between applications. The IEC 61968 and IEC 61970 series define data models and interfaces for distribution management, energy management, and advanced metering infrastructure across electric utility systems.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/apis.yml)
 
+## Scope
+
+- **Type:** Standard
+- **Position:** Consuming
+- **Access:** 3rd-Party
+
+## Tags:
+
+ - AMI, CIM, Energy, Smart Grid, Smart Meter, Utilities, XML
+
 ## Timestamps
 
-- **Modified:** 2026-03-18 
+- **Modified:** 2026-04-28
 
 ## APIs
 
@@ -13,10 +24,11 @@ The IEC CIM 61968 standard defines interfaces for distribution management system
 
 **Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
 
+**Base URL:** https://ami-gateway.utility.example.com/cim/61968
 
 #### Tags:
 
- - Utilities, Energy, Distribution, CIM, XML, Smart Grid
+ - CIM, Distribution, Energy, Smart Grid, Utilities, XML
 
 #### Properties
 
@@ -29,10 +41,11 @@ The IEC CIM 61970 standard defines the Common Information Model for energy manag
 
 **Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
 
+**Base URL:** https://ems-gateway.utility.example.com/cim/61970
 
 #### Tags:
 
- - Utilities, Energy, Transmission, CIM, XML, EMS
+ - CIM, EMS, Energy, Transmission, Utilities, XML
 
 #### Properties
 
@@ -44,10 +57,11 @@ The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end system
 
 **Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
 
+**Base URL:** https://ami-gateway.utility.example.com/cim
 
 #### Tags:
 
- - Utilities, Energy, Smart Meter, AMI, CIM, XML, Metering
+ - AMI, CIM, Energy, Metering, Smart Meter, Utilities, XML
 
 #### Properties
 
@@ -55,3 +69,19 @@ The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end system
 - [Reference](https://cimug.ucaiug.org/)
 
 ## Common Properties
+
+- [Portal](https://www.iec.ch/)
+- [Documentation](https://www.iec.ch/)
+- [Getting Started](https://cimug.ucaiug.org/)
+- [Website](https://www.iec.ch/)
+- [GitHub Organization](https://github.com/cimug-org)
+- [Developer Tools](https://github.com/cimug-org)
+- [OpenAPI](openapi/iec-cim-61968-distribution-openapi.yml)
+- [JSONSchema](json-schema/iec-cim-asset-schema.json)
+- [JSONLDContext](json-ld/iec-cim-context.jsonld)
+
+## Maintainers
+
+**FN:** Kin Lane
+
+**Email:** kin@apievangelist.com
