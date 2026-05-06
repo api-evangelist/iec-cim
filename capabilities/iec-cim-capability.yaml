@@ -1,0 +1,492 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: IEC CIM 61968 Distribution Management API
+  description: REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides
+    access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant
+    resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS)
+    integration.
+  tags:
+  - Iec
+  - Cim
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: iec-cim
+    baseUri: https://dms-gateway.utility.example.com/cim/61968/v1
+    description: IEC CIM 61968 Distribution Management API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{IEC_CIM_TOKEN}}'
+    resources:
+    - name: assets
+      path: /assets
+      operations:
+      - name: listassets
+        method: GET
+        description: List network assets
+        inputParameters:
+        - name: assetType
+          in: query
+          type: string
+        - name: substationId
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assets-mrid
+      path: /assets/{mRID}
+      operations:
+      - name: getasset
+        method: GET
+        description: Get asset by mRID
+        inputParameters:
+        - name: mRID
+          in: path
+          type: string
+          required: true
+          description: CIM Master Resource Identifier (UUID)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: meters
+      path: /meters
+      operations:
+      - name: listmeters
+        method: GET
+        description: List meters
+        inputParameters:
+        - name: substationId
+          in: query
+          type: string
+        - name: feeder
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: meters-mrid-readings
+      path: /meters/{mRID}/readings
+      operations:
+      - name: getmeterreadings
+        method: GET
+        description: Get meter readings
+        inputParameters:
+        - name: mRID
+          in: path
+          type: string
+          required: true
+        - name: startTime
+          in: query
+          type: string
+          required: true
+          description: Reading period start (ISO 8601)
+        - name: endTime
+          in: query
+          type: string
+          required: true
+          description: Reading period end
+        - name: readingType
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: outages
+      path: /outages
+      operations:
+      - name: listoutages
+        method: GET
+        description: List outage events
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: startTime
+          in: query
+          type: string
+        - name: endTime
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: outages-mrid
+      path: /outages/{mRID}
+      operations:
+      - name: getoutage
+        method: GET
+        description: Get outage details
+        inputParameters:
+        - name: mRID
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customers
+      path: /customers
+      operations:
+      - name: listcustomers
+        method: GET
+        description: List utility customers
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Search query (name or address)
+        - name: accountNumber
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: work-orders
+      path: /work-orders
+      operations:
+      - name: listworkorders
+        method: GET
+        description: List work orders
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+        - name: workType
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: iec-cim-rest
+    description: REST adapter for IEC CIM 61968 Distribution Management API.
+    resources:
+    - path: /assets
+      name: listassets
+      operations:
+      - method: GET
+        name: listassets
+        description: List network assets
+        call: iec-cim.listassets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assets/{mRID}
+      name: getasset
+      operations:
+      - method: GET
+        name: getasset
+        description: Get asset by mRID
+        call: iec-cim.getasset
+        with:
+          mRID: rest.mRID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /meters
+      name: listmeters
+      operations:
+      - method: GET
+        name: listmeters
+        description: List meters
+        call: iec-cim.listmeters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /meters/{mRID}/readings
+      name: getmeterreadings
+      operations:
+      - method: GET
+        name: getmeterreadings
+        description: Get meter readings
+        call: iec-cim.getmeterreadings
+        with:
+          mRID: rest.mRID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /outages
+      name: listoutages
+      operations:
+      - method: GET
+        name: listoutages
+        description: List outage events
+        call: iec-cim.listoutages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /outages/{mRID}
+      name: getoutage
+      operations:
+      - method: GET
+        name: getoutage
+        description: Get outage details
+        call: iec-cim.getoutage
+        with:
+          mRID: rest.mRID
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /customers
+      name: listcustomers
+      operations:
+      - method: GET
+        name: listcustomers
+        description: List utility customers
+        call: iec-cim.listcustomers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /work-orders
+      name: listworkorders
+      operations:
+      - method: GET
+        name: listworkorders
+        description: List work orders
+        call: iec-cim.listworkorders
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: iec-cim-mcp
+    transport: http
+    description: MCP adapter for IEC CIM 61968 Distribution Management API for AI agent use.
+    tools:
+    - name: listassets
+      description: List network assets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.listassets
+      with:
+        assetType: tools.assetType
+        substationId: tools.substationId
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: assetType
+        type: string
+        description: assetType
+      - name: substationId
+        type: string
+        description: substationId
+      - name: limit
+        type: integer
+        description: limit
+      - name: offset
+        type: integer
+        description: offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getasset
+      description: Get asset by mRID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.getasset
+      with:
+        mRID: tools.mRID
+      inputParameters:
+      - name: mRID
+        type: string
+        description: CIM Master Resource Identifier (UUID)
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmeters
+      description: List meters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.listmeters
+      with:
+        substationId: tools.substationId
+        feeder: tools.feeder
+        limit: tools.limit
+      inputParameters:
+      - name: substationId
+        type: string
+        description: substationId
+      - name: feeder
+        type: string
+        description: feeder
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmeterreadings
+      description: Get meter readings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.getmeterreadings
+      with:
+        mRID: tools.mRID
+        startTime: tools.startTime
+        endTime: tools.endTime
+        readingType: tools.readingType
+      inputParameters:
+      - name: mRID
+        type: string
+        description: mRID
+        required: true
+      - name: startTime
+        type: string
+        description: Reading period start (ISO 8601)
+        required: true
+      - name: endTime
+        type: string
+        description: Reading period end
+        required: true
+      - name: readingType
+        type: string
+        description: readingType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listoutages
+      description: List outage events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.listoutages
+      with:
+        status: tools.status
+        startTime: tools.startTime
+        endTime: tools.endTime
+        limit: tools.limit
+      inputParameters:
+      - name: status
+        type: string
+        description: status
+      - name: startTime
+        type: string
+        description: startTime
+      - name: endTime
+        type: string
+        description: endTime
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getoutage
+      description: Get outage details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.getoutage
+      with:
+        mRID: tools.mRID
+      inputParameters:
+      - name: mRID
+        type: string
+        description: mRID
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcustomers
+      description: List utility customers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.listcustomers
+      with:
+        q: tools.q
+        accountNumber: tools.accountNumber
+        limit: tools.limit
+      inputParameters:
+      - name: q
+        type: string
+        description: Search query (name or address)
+      - name: accountNumber
+        type: string
+        description: accountNumber
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listworkorders
+      description: List work orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: iec-cim.listworkorders
+      with:
+        status: tools.status
+        workType: tools.workType
+        limit: tools.limit
+      inputParameters:
+      - name: status
+        type: string
+        description: status
+      - name: workType
+        type: string
+        description: workType
+      - name: limit
+        type: integer
+        description: limit
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    IEC_CIM_TOKEN: IEC_CIM_TOKEN
