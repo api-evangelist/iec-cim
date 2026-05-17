@@ -95,11 +95,11 @@ common:
     - url: https://www.iec.ch/
       type: Documentation
     - url: https://cimug.ucaiug.org/
-      type: Getting Started
+      type: GettingStarted
     - url: https://www.iec.ch/
       type: Website
     - url: https://github.com/cimug-org
-      type: GitHub Organization
+      type: GitHubOrganization
     - url: https://github.com/cimug-org
       type: Developer Tools
     - url: openapi/iec-cim-61968-distribution-openapi.yml
