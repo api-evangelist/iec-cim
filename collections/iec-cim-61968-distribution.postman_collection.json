@@ -1,0 +1,1126 @@
+{
+  "item": [
+    {
+      "id": "dc544687-e7e5-4a4a-a747-da51ef4e980d",
+      "name": "Customers",
+      "description": {
+        "content": "Customer service agreements and locations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c648886b-f153-4220-977e-dbd6f4ab58b3",
+          "name": "List utility customers",
+          "request": {
+            "name": "List utility customers",
+            "description": {
+              "content": "Returns utility customer accounts and service agreements. Supports search by name, address, or account number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query (name or address)"
+                },
+                {
+                  "disabled": false,
+                  "key": "accountNumber",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cc6554a-4050-4304-b3af-d1f632ad2d42",
+              "name": "Customer list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customers\": [\n    {\n      \"mRID\": \"5c23d9aa-c73d-1b58-b49f-c496700e4823\",\n      \"name\": \"string\",\n      \"accountNumber\": \"string\",\n      \"customerType\": \"INDUSTRIAL\",\n      \"serviceLocation\": {\n        \"mRID\": \"9315ec38-fa7c-d4cc-614c-2e73bc2d7039\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 475,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 1325,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"email\": \"string\",\n      \"phone\": \"string\"\n    },\n    {\n      \"mRID\": \"320c062a-6c9f-8cee-abbb-12cffa359d5d\",\n      \"name\": \"string\",\n      \"accountNumber\": \"string\",\n      \"customerType\": \"INDUSTRIAL\",\n      \"serviceLocation\": {\n        \"mRID\": \"cc898a1a-2c0e-e3ec-95bf-51a07ce2cb06\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 534,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 8739,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"email\": \"string\",\n      \"phone\": \"string\"\n    }\n  ],\n  \"total\": 6660\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fc4ab894-bf1c-41e3-ae5c-25376131c1ce",
+      "name": "Metering",
+      "description": {
+        "content": "Meters and interval readings (IEC 61968-9 AMI)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d49e095d-adc9-4c4b-8e21-f8c5544cc122",
+          "name": "List meters",
+          "request": {
+            "name": "List meters",
+            "description": {
+              "content": "Returns smart meters and AMI endpoints in the distribution network. Supports filtering by circuit, substation, and meter type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "substationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeder",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c35c2445-19d4-495c-abaf-b1f447d3422f",
+              "name": "Meter list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "substationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meters\": [\n    {\n      \"mRID\": \"6d17978d-c22a-3966-fadc-0055064f2373\",\n      \"name\": \"string\",\n      \"serialNumber\": \"string\",\n      \"utcNumber\": \"string\",\n      \"meterType\": \"ELECTROMECHANICAL\",\n      \"communicationMethod\": \"RF_MESH\",\n      \"serviceLocation\": {\n        \"mRID\": \"9fe32546-a013-134d-5bcc-5ea36611b5f0\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 5656,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 874,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"usagePoint\": {\n        \"mRID\": \"562250a4-3ff3-b1d2-568b-6966ddfa5216\",\n        \"name\": \"string\",\n        \"serviceKind\": \"HEAT\",\n        \"phaseCode\": \"string\"\n      },\n      \"installationDate\": \"1999-11-09\",\n      \"lastCommunication\": \"2013-12-07T11:25:22.851Z\"\n    },\n    {\n      \"mRID\": \"b7f64e1c-f0f4-6670-15ee-707844f3f56c\",\n      \"name\": \"string\",\n      \"serialNumber\": \"string\",\n      \"utcNumber\": \"string\",\n      \"meterType\": \"AMR\",\n      \"communicationMethod\": \"OPTICAL\",\n      \"serviceLocation\": {\n        \"mRID\": \"5fa1e32d-0cc0-4524-b1b7-5d56456d181a\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 8466,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 6894,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"usagePoint\": {\n        \"mRID\": \"1f86bff3-5dbb-cfb7-d5ed-b74765368b16\",\n        \"name\": \"string\",\n        \"serviceKind\": \"GAS\",\n        \"phaseCode\": \"string\"\n      },\n      \"installationDate\": \"1948-12-04\",\n      \"lastCommunication\": \"2002-08-28T09:46:17.728Z\"\n    }\n  ],\n  \"total\": 8156\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a9bae44-685e-4880-b431-a751ff4e1c06",
+          "name": "Get meter readings",
+          "request": {
+            "name": "Get meter readings",
+            "description": {
+              "content": "Returns meter readings for a specific meter. Supports date range filtering and interval selection (15-minute, hourly, daily).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":mRID",
+                "readings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) Reading period start (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) Reading period end"
+                },
+                {
+                  "disabled": false,
+                  "key": "readingType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af9d0be1-4acf-4e51-8cac-46015a3aab78",
+              "name": "Meter readings returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":mRID",
+                    "readings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "readingType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meterMRID\": \"02246751-6163-9dfe-fb43-39269663c0ba\",\n  \"readings\": [\n    {\n      \"mRID\": \"fcbe000a-5f49-598b-a631-56ebfec8f11d\",\n      \"meterMRID\": \"6373a11f-81c1-e69f-705a-837e81a39d5f\",\n      \"readingType\": \"string\",\n      \"timeStamp\": \"2020-09-16T19:05:20.580Z\",\n      \"value\": 5157.006838117562,\n      \"unit\": \"string\",\n      \"multiplier\": \"string\",\n      \"quality\": \"ACTUAL\"\n    },\n    {\n      \"mRID\": \"a8c172d3-f297-6451-c9f5-4bd8cb2a1473\",\n      \"meterMRID\": \"c5d72b7e-053f-6c06-26d8-7d2fb23da94e\",\n      \"readingType\": \"string\",\n      \"timeStamp\": \"1965-07-04T10:17:05.165Z\",\n      \"value\": 3954.682475421508,\n      \"unit\": \"string\",\n      \"multiplier\": \"string\",\n      \"quality\": \"INTERPOLATED\"\n    }\n  ],\n  \"startTime\": \"1994-10-08T23:49:27.618Z\",\n  \"endTime\": \"2024-08-17T04:58:08.083Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ef52498-aeb1-46a9-823b-391926f1a7a1",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":mRID",
+                    "readings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "readingType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a7973b2d-22df-4ff7-a643-8fbcdf096000",
+      "name": "Network Assets",
+      "description": {
+        "content": "Distribution network equipment – transformers, switches, lines, conductors",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "39be8161-33d5-4c5b-a9c1-f4853e2d679b",
+          "name": "List network assets",
+          "request": {
+            "name": "List network assets",
+            "description": {
+              "content": "Returns distribution network assets including transformers, switches, sectionalizers, and overhead/underground lines. Supports filtering by asset type, substation, and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assetType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "substationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e31f1ed-4f84-4aea-9ed9-85d22ac1efec",
+              "name": "Asset list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "substationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": [\n    {\n      \"mRID\": \"7066a7e0-610e-2bff-72fa-ffa1c53f9065\",\n      \"name\": \"string\",\n      \"aliasName\": \"string\",\n      \"description\": \"string\",\n      \"assetType\": \"string\",\n      \"location\": {\n        \"mRID\": \"ad49374e-9288-6b1e-8848-06633317b279\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 8139,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 3227,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"inService\": false,\n      \"installationDate\": \"2020-02-29\",\n      \"ratedVoltage\": 3364.8859278000486,\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\"\n    },\n    {\n      \"mRID\": \"ca2a6336-49d2-8ef7-f10d-6c8d5f45889e\",\n      \"name\": \"string\",\n      \"aliasName\": \"string\",\n      \"description\": \"string\",\n      \"assetType\": \"string\",\n      \"location\": {\n        \"mRID\": \"cfae28a1-bfe0-99d8-8613-4ef3d076445d\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 4214,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 6589,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"inService\": false,\n      \"installationDate\": \"1973-12-13\",\n      \"ratedVoltage\": 3603.520471733064,\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\"\n    }\n  ],\n  \"total\": 442,\n  \"offset\": 2545,\n  \"limit\": 1926\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23f4a323-4445-4af3-9f9c-1137ebb746e9",
+          "name": "Get asset by mRID",
+          "request": {
+            "name": "Get asset by mRID",
+            "description": {
+              "content": "Returns a specific network asset identified by its CIM Master Resource Identifier (mRID).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":mRID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) CIM Master Resource Identifier (UUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50d65c6a-4e70-42f3-8efc-e1bd3b9fd35e",
+              "name": "Asset returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) CIM Master Resource Identifier (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mRID\": \"7350f9ff-160b-762f-4c21-0c308b03478d\",\n  \"name\": \"string\",\n  \"aliasName\": \"string\",\n  \"description\": \"string\",\n  \"assetType\": \"string\",\n  \"location\": {\n    \"mRID\": \"c94fd50c-2097-f896-7e42-7361b0b2a970\",\n    \"name\": \"string\",\n    \"addressGeneral\": \"string\",\n    \"positionPoints\": [\n      {\n        \"sequenceNumber\": 8508,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      },\n      {\n        \"sequenceNumber\": 6574,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      }\n    ]\n  },\n  \"inService\": true,\n  \"installationDate\": \"1962-05-22\",\n  \"ratedVoltage\": 8319.017779415899,\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c80afb16-2254-4c66-bcd2-4a87ccd61a82",
+              "name": "Asset not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) CIM Master Resource Identifier (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "924c4900-6cd1-472b-b0d6-0934f95ccd21",
+      "name": "Outages",
+      "description": {
+        "content": "Outage events and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53028919-025b-4ded-94d3-ca27ac5b0207",
+          "name": "List outage events",
+          "request": {
+            "name": "List outage events",
+            "description": {
+              "content": "Returns current and historical outage events including cause, affected customers, and restoration status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6eadba66-13aa-4fbf-bb3d-84b2ac01c6cc",
+              "name": "Outage list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outages\": [\n    {\n      \"mRID\": \"374314ee-297c-ac51-7f58-a2b4865705c6\",\n      \"name\": \"string\",\n      \"status\": \"Cancelled\",\n      \"startTime\": \"1995-06-19T07:14:20.720Z\",\n      \"endTime\": \"1976-06-24T09:18:10.278Z\",\n      \"cause\": \"string\",\n      \"affectedCustomers\": 3163,\n      \"location\": {\n        \"mRID\": \"60bea325-df31-07f5-694c-9f73f76c300c\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 6355,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 3559,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"affectedAssets\": [\n        {\n          \"mRID\": \"cbb775cd-2f9b-629c-164a-2198a0b77885\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"mRID\": \"75573a41-d2c3-9052-d699-62f895552f41\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"mRID\": \"792e7a99-e478-460c-9e17-3a4d22fd8e47\",\n      \"name\": \"string\",\n      \"status\": \"Restored\",\n      \"startTime\": \"1957-09-28T05:20:29.968Z\",\n      \"endTime\": \"2001-05-22T12:27:20.203Z\",\n      \"cause\": \"string\",\n      \"affectedCustomers\": 1822,\n      \"location\": {\n        \"mRID\": \"5597d481-6ac6-cb55-7aae-929efdbe7eb4\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 3826,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 3411,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"affectedAssets\": [\n        {\n          \"mRID\": \"ab8dcf95-c20d-03b6-6e29-3c0354f9d202\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"mRID\": \"6e403b43-d5b5-77f9-5213-510028e74648\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total\": 1607\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77292b00-4c34-4092-8de7-5738c013f249",
+          "name": "Get outage details",
+          "request": {
+            "name": "Get outage details",
+            "description": {
+              "content": "Returns detailed information about a specific outage event including affected assets, customers, and restoration actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outages",
+                ":mRID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e20e4a90-32f2-4cb1-9a12-97d2d607b274",
+              "name": "Outage returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mRID\": \"f8c701ad-9b68-1776-a375-91d254ab1dfd\",\n  \"name\": \"string\",\n  \"status\": \"Cancelled\",\n  \"startTime\": \"2016-03-28T22:02:19.255Z\",\n  \"endTime\": \"1946-08-22T03:24:31.546Z\",\n  \"cause\": \"string\",\n  \"affectedCustomers\": 3871,\n  \"location\": {\n    \"mRID\": \"7770f119-2786-a067-bc7c-38a06e7f849f\",\n    \"name\": \"string\",\n    \"addressGeneral\": \"string\",\n    \"positionPoints\": [\n      {\n        \"sequenceNumber\": 8628,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      },\n      {\n        \"sequenceNumber\": 1842,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      }\n    ]\n  },\n  \"affectedAssets\": [\n    {\n      \"mRID\": \"32ee494d-73f5-2200-4668-beab7f974530\",\n      \"name\": \"string\",\n      \"assetType\": \"string\"\n    },\n    {\n      \"mRID\": \"34042218-84f8-ec0e-f912-97ac4e471d1d\",\n      \"name\": \"string\",\n      \"assetType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01f8ac93-7a9d-4678-b05c-d93cb2018b95",
+              "name": "Outage not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9d2c1345-f992-4f23-add2-4bef5ecacede",
+      "name": "Work Orders",
+      "description": {
+        "content": "Maintenance and construction work orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf301763-be60-4377-9e22-407b6f3a50f6",
+          "name": "List work orders",
+          "request": {
+            "name": "List work orders",
+            "description": {
+              "content": "Returns distribution maintenance and construction work orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "work-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "workType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "286bfb04-9a5d-42af-89d1-4a8294d59c9d",
+              "name": "Work orders returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "work-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workOrders\": [\n    {\n      \"mRID\": \"cef20704-937d-bb95-6a0b-89c4bf53f304\",\n      \"workOrderNumber\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"workType\": \"string\",\n      \"priority\": \"EMERGENCY\",\n      \"scheduledStart\": \"1956-08-28T01:16:36.257Z\",\n      \"actualStart\": \"1947-01-15T19:24:43.817Z\",\n      \"completedDateTime\": \"1970-05-08T00:04:49.691Z\",\n      \"location\": {\n        \"mRID\": \"9c4c98e6-19e7-62c4-a2fb-49a92999b745\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 8825,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 3185,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"assignedCrew\": \"string\"\n    },\n    {\n      \"mRID\": \"56c89ec1-8f57-8f2d-2190-1560259bfdcd\",\n      \"workOrderNumber\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"ISSUED\",\n      \"workType\": \"string\",\n      \"priority\": \"ROUTINE\",\n      \"scheduledStart\": \"2004-08-05T01:02:05.035Z\",\n      \"actualStart\": \"1951-10-18T05:48:49.925Z\",\n      \"completedDateTime\": \"1968-03-24T12:38:21.489Z\",\n      \"location\": {\n        \"mRID\": \"dfdb0bd2-53a4-c2f1-fa42-0aafe521d5d4\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 5633,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 5420,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"assignedCrew\": \"string\"\n    }\n  ],\n  \"total\": 3291\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dms-gateway.utility.example.com/cim/61968/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "cim.read cim.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.utility.example.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e01f7e22-4e82-43aa-888b-74b57008bdff",
+    "name": "IEC CIM 61968 Distribution Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.\n\nContact Support:\n Name: CIM User Group",
+      "type": "text/plain"
+    }
+  }
+}

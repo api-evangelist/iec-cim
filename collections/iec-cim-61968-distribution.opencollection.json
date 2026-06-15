@@ -1,0 +1,284 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IEC CIM 61968 Distribution Management API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.utility.example.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List network assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/assets",
+            "params": [
+              {
+                "name": "assetType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "substationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns distribution network assets including transformers, switches, sectionalizers, and overhead/underground lines. Supports filtering by asset type, substation, and location."
+        },
+        {
+          "info": {
+            "name": "Get asset by mRID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/assets/:mRID",
+            "params": [
+              {
+                "name": "mRID",
+                "value": "",
+                "type": "path",
+                "description": "CIM Master Resource Identifier (UUID)"
+              }
+            ]
+          },
+          "docs": "Returns a specific network asset identified by its CIM Master Resource Identifier (mRID)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List meters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/meters",
+            "params": [
+              {
+                "name": "substationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "feeder",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns smart meters and AMI endpoints in the distribution network. Supports filtering by circuit, substation, and meter type."
+        },
+        {
+          "info": {
+            "name": "Get meter readings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/meters/:mRID/readings",
+            "params": [
+              {
+                "name": "mRID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Reading period start (ISO 8601)"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Reading period end"
+              },
+              {
+                "name": "readingType",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns meter readings for a specific meter. Supports date range filtering and interval selection (15-minute, hourly, daily)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List outage events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/outages",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns current and historical outage events including cause, affected customers, and restoration status."
+        },
+        {
+          "info": {
+            "name": "Get outage details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/outages/:mRID",
+            "params": [
+              {
+                "name": "mRID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific outage event including affected assets, customers, and restoration actions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List utility customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/customers",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query (name or address)"
+              },
+              {
+                "name": "accountNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns utility customer accounts and service agreements. Supports search by name, address, or account number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Work Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List work orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/work-orders",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns distribution maintenance and construction work orders."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
