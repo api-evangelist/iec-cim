@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/iec-cim-61968-distribution-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.utility.example.com/oauth/token
+    scopes: 2
+  sources:
+  - openapi/iec-cim-61968-distribution-openapi.yml
+- name: BasicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/iec-cim-61968-distribution-openapi.yml
