@@ -66,6 +66,8 @@ apis:
       interval data, usage points, and demand response signals using CIM XML data models compliant with IEC 61968-9 for
       utility grid operations.
 common:
+  - type: OAuthScopes
+    url: scopes/iec-cim-scopes.yml
   - aid
   - name
   - description

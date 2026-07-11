@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/iec-cim-61968-distribution-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/iec-cim-61968-distribution-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://auth.utility.example.com/oauth/token
+scopes:
+- scope: cim.read
+  description: Read CIM data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/iec-cim-61968-distribution-openapi.yml
+- scope: cim.write
+  description: Write CIM data
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/iec-cim-61968-distribution-openapi.yml
