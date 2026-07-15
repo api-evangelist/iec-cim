@@ -66,6 +66,8 @@ apis:
       interval data, usage points, and demand response signals using CIM XML data models compliant with IEC 61968-9 for
       utility grid operations.
 common:
+  - type: AgenticAccess
+    url: agentic-access/iec-cim-agentic-access.yml
   - type: DomainSecurity
     url: security/iec-cim-domain-security.yml
   - type: Authentication
