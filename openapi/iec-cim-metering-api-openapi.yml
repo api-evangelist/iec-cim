@@ -1,0 +1,247 @@
+openapi: 3.1.0
+info:
+  title: IEC CIM 61968 Distribution Management Customers Metering API
+  description: REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.
+  version: 1.0.0
+  contact:
+    name: CIM User Group
+    url: https://cimug.ucaiug.org/
+  license:
+    name: IEC License
+    url: https://www.iec.ch/
+servers:
+- url: https://dms-gateway.utility.example.com/cim/61968/v1
+  description: Distribution Management System CIM API gateway
+security:
+- OAuth2: []
+- BasicAuth: []
+tags:
+- name: Metering
+  description: Meters and interval readings (IEC 61968-9 AMI)
+paths:
+  /meters:
+    get:
+      operationId: listMeters
+      summary: List meters
+      description: Returns smart meters and AMI endpoints in the distribution network. Supports filtering by circuit, substation, and meter type.
+      tags:
+      - Metering
+      parameters:
+      - name: substationId
+        in: query
+        schema:
+          type: string
+      - name: feeder
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Meter list returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterList'
+  /meters/{mRID}/readings:
+    get:
+      operationId: getMeterReadings
+      summary: Get meter readings
+      description: Returns meter readings for a specific meter. Supports date range filtering and interval selection (15-minute, hourly, daily).
+      tags:
+      - Metering
+      parameters:
+      - name: mRID
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Reading period start (ISO 8601)
+      - name: endTime
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Reading period end
+      - name: readingType
+        in: query
+        schema:
+          type: string
+          enum:
+          - ENERGY_KWH
+          - DEMAND_KW
+          - VOLTAGE
+          - CURRENT
+          - POWER_FACTOR
+      responses:
+        '200':
+          description: Meter readings returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterReadingList'
+        '404':
+          description: Meter not found
+components:
+  schemas:
+    MeterList:
+      type: object
+      properties:
+        meters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        total:
+          type: integer
+    MeterReading:
+      type: object
+      description: CIM MeterReading – a set of readings from a meter for a time period
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        meterMRID:
+          type: string
+          format: uuid
+        readingType:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+        unit:
+          type: string
+          description: Unit of measure (kWh, kW, V, A)
+        multiplier:
+          type: string
+          description: Metric multiplier (k, M, G, etc.)
+        quality:
+          type: string
+          enum:
+          - ACTUAL
+          - ESTIMATED
+          - SUBSTITUTED
+          - INTERPOLATED
+    MeterReadingList:
+      type: object
+      properties:
+        meterMRID:
+          type: string
+          format: uuid
+        readings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterReading'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    UsagePoint:
+      type: object
+      description: CIM UsagePoint – point of delivery for a customer
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serviceKind:
+          type: string
+          enum:
+          - ELECTRICITY
+          - GAS
+          - WATER
+          - HEAT
+        phaseCode:
+          type: string
+    Location:
+      type: object
+      description: CIM Location with coordinates
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
+    Meter:
+      type: object
+      description: CIM Meter – an AMI or electromechanical meter endpoint
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serialNumber:
+          type: string
+        utcNumber:
+          type: string
+          description: Utility tracking number
+        meterType:
+          type: string
+          enum:
+          - AMI
+          - AMR
+          - ELECTROMECHANICAL
+        communicationMethod:
+          type: string
+          enum:
+          - PLC
+          - RF_MESH
+          - CELLULAR
+          - OPTICAL
+        serviceLocation:
+          $ref: '#/components/schemas/Location'
+        usagePoint:
+          $ref: '#/components/schemas/UsagePoint'
+        installationDate:
+          type: string
+          format: date
+        lastCommunication:
+          type: string
+          format: date-time
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://auth.utility.example.com/oauth/token
+          scopes:
+            cim.read: Read CIM data
+            cim.write: Write CIM data
+    BasicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: IEC CIM User Group
+  url: https://cimug.ucaiug.org/
