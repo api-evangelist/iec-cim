@@ -1,0 +1,22 @@
+{
+  "provider": "iec-cim",
+  "sources": [
+    "iec-cim-customers-api-openapi.yml",
+    "iec-cim-metering-api-openapi.yml",
+    "iec-cim-network-assets-api-openapi.yml",
+    "iec-cim-outages-api-openapi.yml",
+    "iec-cim-work-orders-api-openapi.yml"
+  ],
+  "outputs": [
+    "iec-cim-customers-api-openapi.yml",
+    "iec-cim-metering-api-openapi.yml",
+    "iec-cim-network-assets-api-openapi.yml",
+    "iec-cim-outages-api-openapi.yml",
+    "iec-cim-work-orders-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
