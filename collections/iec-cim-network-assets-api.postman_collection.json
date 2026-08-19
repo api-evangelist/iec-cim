@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "ad86f293-9227-4ad7-958c-3f0912d0f27a",
+      "name": "Network Assets",
+      "description": {
+        "content": "Distribution network equipment – transformers, switches, lines, conductors",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a21ec50-dc00-4aca-ae24-64f058552ebe",
+          "name": "List network assets",
+          "request": {
+            "name": "List network assets",
+            "description": {
+              "content": "Returns distribution network assets including transformers, switches, sectionalizers, and overhead/underground lines. Supports filtering by asset type, substation, and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assetType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "substationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "228f664b-fdcd-423e-abcc-ff5ff4759563",
+              "name": "Asset list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assetType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "substationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": [\n    {\n      \"mRID\": \"51ddec14-8156-2d7f-e248-4e3191da98c4\",\n      \"name\": \"string\",\n      \"aliasName\": \"string\",\n      \"description\": \"string\",\n      \"assetType\": \"string\",\n      \"location\": {\n        \"mRID\": \"6f8c8182-22e3-4253-4052-f569ab628ed5\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 1159,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 6011,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"inService\": true,\n      \"installationDate\": \"1971-05-22\",\n      \"ratedVoltage\": 7354.064553591816,\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\"\n    },\n    {\n      \"mRID\": \"dfb5f2a5-1a5b-2fc5-9635-6c3f3ba5527b\",\n      \"name\": \"string\",\n      \"aliasName\": \"string\",\n      \"description\": \"string\",\n      \"assetType\": \"string\",\n      \"location\": {\n        \"mRID\": \"5bbe6c56-8269-7f7d-ded2-810e9fe7977a\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 233,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 4842,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"inService\": true,\n      \"installationDate\": \"1978-10-02\",\n      \"ratedVoltage\": 8928.216432926405,\n      \"manufacturer\": \"string\",\n      \"model\": \"string\",\n      \"serialNumber\": \"string\"\n    }\n  ],\n  \"total\": 110,\n  \"offset\": 5823,\n  \"limit\": 7607\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c05f81ed-57bb-4a49-819a-ab20f7b3ebb2",
+          "name": "Get asset by mRID",
+          "request": {
+            "name": "Get asset by mRID",
+            "description": {
+              "content": "Returns a specific network asset identified by its CIM Master Resource Identifier (mRID).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                ":mRID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) CIM Master Resource Identifier (UUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4318119-36a2-419b-99e9-e9c14a56c29e",
+              "name": "Asset returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) CIM Master Resource Identifier (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mRID\": \"0781766e-c77b-f7a5-d099-9a55191f56e9\",\n  \"name\": \"string\",\n  \"aliasName\": \"string\",\n  \"description\": \"string\",\n  \"assetType\": \"string\",\n  \"location\": {\n    \"mRID\": \"b856b8ec-b387-f845-8ac5-f4ed49e3bab5\",\n    \"name\": \"string\",\n    \"addressGeneral\": \"string\",\n    \"positionPoints\": [\n      {\n        \"sequenceNumber\": 8503,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      },\n      {\n        \"sequenceNumber\": 3030,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      }\n    ]\n  },\n  \"inService\": false,\n  \"installationDate\": \"2026-03-07\",\n  \"ratedVoltage\": 702.6950128508258,\n  \"manufacturer\": \"string\",\n  \"model\": \"string\",\n  \"serialNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "687b2a61-326f-44b5-9be2-d7adf494fc4a",
+              "name": "Asset not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) CIM Master Resource Identifier (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dms-gateway.utility.example.com/cim/61968/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "cim.read cim.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.utility.example.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aba198cc-cf79-4e57-907f-9fc3d529cf4d",
+    "name": "IEC CIM 61968 Distribution Management Customers Network Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.\n\nContact Support:\n Name: CIM User Group",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "item": [
+    {
+      "id": "1a5b0868-fca3-499d-bd3a-a2c406a32f36",
+      "name": "Metering",
+      "description": {
+        "content": "Meters and interval readings (IEC 61968-9 AMI)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c88beb44-b61d-494b-b4c4-9e777d1e99e6",
+          "name": "List meters",
+          "request": {
+            "name": "List meters",
+            "description": {
+              "content": "Returns smart meters and AMI endpoints in the distribution network. Supports filtering by circuit, substation, and meter type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "substationId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "feeder",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57184c1a-0fa2-4d46-ad3e-8c86bec5692c",
+              "name": "Meter list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "substationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "feeder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meters\": [\n    {\n      \"mRID\": \"b850cd4d-3687-6ee3-317f-d22b49d00b43\",\n      \"name\": \"string\",\n      \"serialNumber\": \"string\",\n      \"utcNumber\": \"string\",\n      \"meterType\": \"ELECTROMECHANICAL\",\n      \"communicationMethod\": \"OPTICAL\",\n      \"serviceLocation\": {\n        \"mRID\": \"b59379a0-880d-cc62-6442-b1aeb67a3da9\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 9982,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 1753,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"usagePoint\": {\n        \"mRID\": \"9918a5d1-904d-13e8-bad3-1dd6c58c41e3\",\n        \"name\": \"string\",\n        \"serviceKind\": \"GAS\",\n        \"phaseCode\": \"string\"\n      },\n      \"installationDate\": \"2003-05-23\",\n      \"lastCommunication\": \"1948-02-18T09:48:17.738Z\"\n    },\n    {\n      \"mRID\": \"8defb466-41bd-f77a-44f5-6a048953f214\",\n      \"name\": \"string\",\n      \"serialNumber\": \"string\",\n      \"utcNumber\": \"string\",\n      \"meterType\": \"AMI\",\n      \"communicationMethod\": \"OPTICAL\",\n      \"serviceLocation\": {\n        \"mRID\": \"eede66c5-5f9b-7c28-758c-abd95461fd08\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 9810,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 6298,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"usagePoint\": {\n        \"mRID\": \"24b01637-2f65-67ec-8b1f-63835ec161b0\",\n        \"name\": \"string\",\n        \"serviceKind\": \"HEAT\",\n        \"phaseCode\": \"string\"\n      },\n      \"installationDate\": \"1949-03-16\",\n      \"lastCommunication\": \"1952-12-24T08:04:28.282Z\"\n    }\n  ],\n  \"total\": 6641\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d258cb0d-653d-4775-a872-f5bb2ab8102b",
+          "name": "Get meter readings",
+          "request": {
+            "name": "Get meter readings",
+            "description": {
+              "content": "Returns meter readings for a specific meter. Supports date range filtering and interval selection (15-minute, hourly, daily).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "meters",
+                ":mRID",
+                "readings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) Reading period start (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "(Required) Reading period end"
+                },
+                {
+                  "disabled": false,
+                  "key": "readingType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a2d5662-2e78-4882-9d19-0c379ed743fc",
+              "name": "Meter readings returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":mRID",
+                    "readings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "readingType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meterMRID\": \"3837a5c7-1099-031c-b2e3-ed7bf1f53de2\",\n  \"readings\": [\n    {\n      \"mRID\": \"1aa76c9f-c9ea-739c-5dd9-6b5c1e6f0b89\",\n      \"meterMRID\": \"c45ba5da-f60b-7af7-e84b-c93e50776ea3\",\n      \"readingType\": \"string\",\n      \"timeStamp\": \"1989-10-03T13:50:04.141Z\",\n      \"value\": 4318.648967646945,\n      \"unit\": \"string\",\n      \"multiplier\": \"string\",\n      \"quality\": \"ACTUAL\"\n    },\n    {\n      \"mRID\": \"d6c0aaa6-6fac-8b36-486f-e15f600b69e6\",\n      \"meterMRID\": \"5000b53f-32d5-53e1-fda6-a69faae8bdcb\",\n      \"readingType\": \"string\",\n      \"timeStamp\": \"1962-02-27T11:25:55.356Z\",\n      \"value\": 8360.301229034278,\n      \"unit\": \"string\",\n      \"multiplier\": \"string\",\n      \"quality\": \"ESTIMATED\"\n    }\n  ],\n  \"startTime\": \"2010-11-12T13:59:00.585Z\",\n  \"endTime\": \"1949-12-06T10:15:04.321Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b51a2c70-3ccb-43d2-ba97-92d3a405dc70",
+              "name": "Meter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "meters",
+                    ":mRID",
+                    "readings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "readingType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dms-gateway.utility.example.com/cim/61968/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "cim.read cim.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.utility.example.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2430de1c-e32a-43e4-8d07-b24a50be64bf",
+    "name": "IEC CIM 61968 Distribution Management Customers Metering API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.\n\nContact Support:\n Name: CIM User Group",
+      "type": "text/plain"
+    }
+  }
+}

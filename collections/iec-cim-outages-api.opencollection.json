@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IEC CIM 61968 Distribution Management Customers Outages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.utility.example.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List outage events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/outages",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns current and historical outage events including cause, affected customers, and restoration status."
+        },
+        {
+          "info": {
+            "name": "Get outage details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/outages/:mRID",
+            "params": [
+              {
+                "name": "mRID",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific outage event including affected assets, customers, and restoration actions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

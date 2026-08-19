@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IEC CIM 61968 Distribution Management Customers Network Assets API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://auth.utility.example.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List network assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/assets",
+            "params": [
+              {
+                "name": "assetType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "substationId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns distribution network assets including transformers, switches, sectionalizers, and overhead/underground lines. Supports filtering by asset type, substation, and location."
+        },
+        {
+          "info": {
+            "name": "Get asset by mRID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dms-gateway.utility.example.com/cim/61968/v1/assets/:mRID",
+            "params": [
+              {
+                "name": "mRID",
+                "value": "",
+                "type": "path",
+                "description": "CIM Master Resource Identifier (UUID)"
+              }
+            ]
+          },
+          "docs": "Returns a specific network asset identified by its CIM Master Resource Identifier (mRID)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

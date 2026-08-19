@@ -1,0 +1,156 @@
+{
+  "item": [
+    {
+      "id": "b93a2327-56cf-4bcb-9fb4-e865f77e64a4",
+      "name": "Work Orders",
+      "description": {
+        "content": "Maintenance and construction work orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4b76fae-2513-4785-9c9c-41db7b86a357",
+          "name": "List work orders",
+          "request": {
+            "name": "List work orders",
+            "description": {
+              "content": "Returns distribution maintenance and construction work orders.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "work-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "workType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5c9f726-3859-4fef-a0e5-02206017c108",
+              "name": "Work orders returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "work-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"workOrders\": [\n    {\n      \"mRID\": \"66e73e3d-3ea6-a22d-dc27-acd73304605b\",\n      \"workOrderNumber\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"COMPLETED\",\n      \"workType\": \"string\",\n      \"priority\": \"LOW\",\n      \"scheduledStart\": \"1948-06-29T09:06:46.469Z\",\n      \"actualStart\": \"1974-07-07T00:02:48.188Z\",\n      \"completedDateTime\": \"2010-02-01T22:48:18.586Z\",\n      \"location\": {\n        \"mRID\": \"09e47daf-6e7b-af9d-df15-5080e2756cc9\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 9856,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 2095,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"assignedCrew\": \"string\"\n    },\n    {\n      \"mRID\": \"f3dd598c-0bd7-9393-89c0-4cfb8df9e44d\",\n      \"workOrderNumber\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"PENDING\",\n      \"workType\": \"string\",\n      \"priority\": \"LOW\",\n      \"scheduledStart\": \"2003-07-22T11:35:16.325Z\",\n      \"actualStart\": \"1983-08-27T08:12:58.402Z\",\n      \"completedDateTime\": \"1998-04-05T08:48:09.380Z\",\n      \"location\": {\n        \"mRID\": \"e96c73ce-4295-eb83-14f3-42f40b05a051\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 6327,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 7397,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"assignedCrew\": \"string\"\n    }\n  ],\n  \"total\": 6222\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dms-gateway.utility.example.com/cim/61968/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "cim.read cim.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.utility.example.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "450cac17-ea8d-424c-8f66-15e1dede7e1d",
+    "name": "IEC CIM 61968 Distribution Management Customers Work Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.\n\nContact Support:\n Name: CIM User Group",
+      "type": "text/plain"
+    }
+  }
+}

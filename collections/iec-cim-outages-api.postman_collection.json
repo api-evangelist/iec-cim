@@ -1,0 +1,309 @@
+{
+  "item": [
+    {
+      "id": "ed04bf87-c47c-4e5c-9594-f363209de8c0",
+      "name": "Outages",
+      "description": {
+        "content": "Outage events and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9f0a195-1918-48bb-b336-ba9272c938a3",
+          "name": "List outage events",
+          "request": {
+            "name": "List outage events",
+            "description": {
+              "content": "Returns current and historical outage events including cause, affected customers, and restoration status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38021aa7-e4a8-437a-9014-8ba41720392d",
+              "name": "Outage list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outages\": [\n    {\n      \"mRID\": \"a8927a3e-09b9-4cd3-d145-c8993705f4c2\",\n      \"name\": \"string\",\n      \"status\": \"Restored\",\n      \"startTime\": \"1997-03-24T06:44:52.778Z\",\n      \"endTime\": \"2009-04-05T07:50:29.256Z\",\n      \"cause\": \"string\",\n      \"affectedCustomers\": 4003,\n      \"location\": {\n        \"mRID\": \"0fab6d50-7573-600f-133b-bc0ce456ea4d\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 1868,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 3404,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"affectedAssets\": [\n        {\n          \"mRID\": \"17cc73cf-6c83-3e5d-7dd8-bf6ad5c50b95\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"mRID\": \"91bf6bdd-5ac5-554d-8442-f7c990fdb331\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    },\n    {\n      \"mRID\": \"32897d30-5bf3-ed59-251d-9d04bcbbb023\",\n      \"name\": \"string\",\n      \"status\": \"Cancelled\",\n      \"startTime\": \"2012-12-09T04:07:01.772Z\",\n      \"endTime\": \"2014-12-13T23:12:01.867Z\",\n      \"cause\": \"string\",\n      \"affectedCustomers\": 655,\n      \"location\": {\n        \"mRID\": \"4d836292-5526-df4c-8cb3-df09b57394d8\",\n        \"name\": \"string\",\n        \"addressGeneral\": \"string\",\n        \"positionPoints\": [\n          {\n            \"sequenceNumber\": 9546,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          },\n          {\n            \"sequenceNumber\": 9305,\n            \"xPosition\": \"string\",\n            \"yPosition\": \"string\"\n          }\n        ]\n      },\n      \"affectedAssets\": [\n        {\n          \"mRID\": \"d41b77cb-737a-a18c-5b8b-95ebb78420d0\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        },\n        {\n          \"mRID\": \"5d6cdae0-c4eb-d9d6-20c8-0d840c2ac8d0\",\n          \"name\": \"string\",\n          \"assetType\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"total\": 4159\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1348c6c9-36f2-4b73-a1e8-319a21bc42c4",
+          "name": "Get outage details",
+          "request": {
+            "name": "Get outage details",
+            "description": {
+              "content": "Returns detailed information about a specific outage event including affected assets, customers, and restoration actions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outages",
+                ":mRID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "mRID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d723427d-c2bb-4370-bef5-9eba059f1e08",
+              "name": "Outage returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mRID\": \"059e355e-7065-c3f4-1c9e-37730ab83b39\",\n  \"name\": \"string\",\n  \"status\": \"Active\",\n  \"startTime\": \"1983-01-28T07:04:53.378Z\",\n  \"endTime\": \"1994-05-29T00:42:33.796Z\",\n  \"cause\": \"string\",\n  \"affectedCustomers\": 288,\n  \"location\": {\n    \"mRID\": \"8b155a62-9b42-daa7-0ec2-f7281fde043e\",\n    \"name\": \"string\",\n    \"addressGeneral\": \"string\",\n    \"positionPoints\": [\n      {\n        \"sequenceNumber\": 5452,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      },\n      {\n        \"sequenceNumber\": 520,\n        \"xPosition\": \"string\",\n        \"yPosition\": \"string\"\n      }\n    ]\n  },\n  \"affectedAssets\": [\n    {\n      \"mRID\": \"fdaa1f67-5a82-6ec8-4820-265cda4250b6\",\n      \"name\": \"string\",\n      \"assetType\": \"string\"\n    },\n    {\n      \"mRID\": \"06e36a46-9931-1224-6a1a-15935045bee1\",\n      \"name\": \"string\",\n      \"assetType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57ca98e6-96c0-478c-b290-b55ebd27a538",
+              "name": "Outage not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ":mRID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "mRID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://dms-gateway.utility.example.com/cim/61968/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "cim.read cim.write"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.utility.example.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e4bad09-4d87-4b5f-ae97-9cdab56ec53b",
+    "name": "IEC CIM 61968 Distribution Management Customers Outages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.\n\nContact Support:\n Name: CIM User Group",
+      "type": "text/plain"
+    }
+  }
+}
