@@ -46,9 +46,8 @@ apis:
     type: Documentation
   - url: https://cimug.ucaiug.org/
     type: Reference
-  description: >-
-    The IEC CIM 61970 standard defines the Common Information Model for energy management systems (EMS),
-    enabling data exchange for power system network models, measurements, and topology across transmission
+  description: The IEC CIM 61970 standard defines the Common Information Model for energy management systems
+    (EMS), enabling data exchange for power system network models, measurements, and topology across transmission
     utility systems.
 - aid: iec-cim:iec-cim-ami-smart-meter-api
   name: IEC CIM AMI Smart Meter API
@@ -67,10 +66,9 @@ apis:
     type: Documentation
   - url: https://cimug.ucaiug.org/
     type: Reference
-  description: >-
-    The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end systems provide smart meter
-    readings, interval data, usage points, and demand response signals using CIM XML data models compliant
-    with IEC 61968-9 for utility grid operations.
+  description: The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end systems provide
+    smart meter readings, interval data, usage points, and demand response signals using CIM XML data
+    models compliant with IEC 61968-9 for utility grid operations.
 - aid: iec-cim:iec-cim-customers-api
   name: iec-cim Customers API
   description: Customer service agreements and locations
@@ -142,24 +140,28 @@ apis:
   - type: Reference
     url: https://cimug.ucaiug.org/
 common:
-  - type: AgenticAccess
-    url: agentic-access/iec-cim-agentic-access.yml
-  - type: DomainSecurity
-    url: security/iec-cim-domain-security.yml
-  - type: Authentication
-    url: authentication/iec-cim-authentication.yml
-  - type: OAuthScopes
-    url: scopes/iec-cim-scopes.yml
-  - aid
-  - name
-  - description
-  - image
-  - tags
-  - properties
+- type: AgenticAccess
+  url: agentic-access/iec-cim-agentic-access.yml
+- type: DomainSecurity
+  url: security/iec-cim-domain-security.yml
+- type: Authentication
+  url: authentication/iec-cim-authentication.yml
+- type: OAuthScopes
+  url: scopes/iec-cim-scopes.yml
+- aid
+- name
+- description
+- image
+- tags
+- properties
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
-modified: '2026-05-19'
-description: >-
-  IEC Common Information Model (CIM) is an international standard developed by the International Electrotechnical
-  Commission for representing electrical power system data and facilitating data exchange between applications.
+modified: '2026-09-16'
+description: IEC Common Information Model (CIM) is an international standard developed by the International
+  Electrotechnical Commission for representing electrical power system data and facilitating data exchange
+  between applications.
+tags:
+- Energy
+- Utilities
+- Metering
