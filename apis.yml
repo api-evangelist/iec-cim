@@ -140,6 +140,8 @@ apis:
   - type: Reference
     url: https://cimug.ucaiug.org/
 common:
+- type: Website
+  url: https://iec.ch
 - type: AgenticAccess
   url: agentic-access/iec-cim-agentic-access.yml
 - type: DomainSecurity
