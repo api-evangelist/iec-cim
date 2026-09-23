@@ -1,11 +1,7 @@
 {
   "provider": "iec-cim",
   "sources": [
-    "iec-cim-customers-api-openapi.yml",
-    "iec-cim-metering-api-openapi.yml",
-    "iec-cim-network-assets-api-openapi.yml",
-    "iec-cim-outages-api-openapi.yml",
-    "iec-cim-work-orders-api-openapi.yml"
+    "_original/iec-cim-61968-distribution-openapi.yml"
   ],
   "outputs": [
     "iec-cim-customers-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "iec-cim-61968-distribution-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "iec-cim-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "iec-cim-metering-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "iec-cim-network-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "iec-cim-outages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "iec-cim-work-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

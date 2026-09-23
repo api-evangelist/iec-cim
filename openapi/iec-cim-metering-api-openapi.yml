@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: IEC CIM 61968 Distribution Management Customers Metering API
+  title: IEC CIM 61968 Distribution Management Metering API
   description: REST API for distribution utility systems based on IEC 61968 Common Information Model (CIM) standards. Provides access to network assets, outage management, customer information, meter reading, and work management data using CIM-compliant resource representations. Implements IEC 61968 Parts 3, 4, 9, and 11 interfaces for distribution management systems (DMS) integration.
   version: 1.0.0
   contact:
@@ -96,15 +96,40 @@ paths:
           description: Meter not found
 components:
   schemas:
-    MeterList:
+    UsagePoint:
+      type: object
+      description: CIM UsagePoint – point of delivery for a customer
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serviceKind:
+          type: string
+          enum:
+          - ELECTRICITY
+          - GAS
+          - WATER
+          - HEAT
+        phaseCode:
+          type: string
+    MeterReadingList:
       type: object
       properties:
-        meters:
+        meterMRID:
+          type: string
+          format: uuid
+        readings:
           type: array
           items:
-            $ref: '#/components/schemas/Meter'
-        total:
-          type: integer
+            $ref: '#/components/schemas/MeterReading'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
     MeterReading:
       type: object
       description: CIM MeterReading – a set of readings from a meter for a time period
@@ -135,40 +160,6 @@ components:
           - ESTIMATED
           - SUBSTITUTED
           - INTERPOLATED
-    MeterReadingList:
-      type: object
-      properties:
-        meterMRID:
-          type: string
-          format: uuid
-        readings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeterReading'
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
-    UsagePoint:
-      type: object
-      description: CIM UsagePoint – point of delivery for a customer
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        serviceKind:
-          type: string
-          enum:
-          - ELECTRICITY
-          - GAS
-          - WATER
-          - HEAT
-        phaseCode:
-          type: string
     Location:
       type: object
       description: CIM Location with coordinates
@@ -193,6 +184,15 @@ components:
               yPosition:
                 type: string
                 description: Latitude
+    MeterList:
+      type: object
+      properties:
+        meters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meter'
+        total:
+          type: integer
     Meter:
       type: object
       description: CIM Meter – an AMI or electromechanical meter endpoint
