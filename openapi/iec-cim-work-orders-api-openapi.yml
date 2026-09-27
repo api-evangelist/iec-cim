@@ -55,15 +55,6 @@ paths:
                 $ref: '#/components/schemas/WorkOrderList'
 components:
   schemas:
-    WorkOrderList:
-      type: object
-      properties:
-        workOrders:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrder'
-        total:
-          type: integer
     Location:
       type: object
       description: CIM Location with coordinates
@@ -129,6 +120,15 @@ components:
           $ref: '#/components/schemas/Location'
         assignedCrew:
           type: string
+    WorkOrderList:
+      type: object
+      properties:
+        workOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrder'
+        total:
+          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2

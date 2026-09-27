@@ -82,6 +82,25 @@ paths:
           description: Outage not found
 components:
   schemas:
+    OutageList:
+      type: object
+      properties:
+        outages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outage'
+        total:
+          type: integer
+    AssetRef:
+      type: object
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        assetType:
+          type: string
     Location:
       type: object
       description: CIM Location with coordinates
@@ -106,15 +125,6 @@ components:
               yPosition:
                 type: string
                 description: Latitude
-    OutageList:
-      type: object
-      properties:
-        outages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Outage'
-        total:
-          type: integer
     Outage:
       type: object
       description: CIM Outage event
@@ -146,16 +156,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AssetRef'
-    AssetRef:
-      type: object
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        assetType:
-          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -87,6 +87,19 @@ paths:
           description: Asset not found
 components:
   schemas:
+    AssetList:
+      type: object
+      properties:
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
     Location:
       type: object
       description: CIM Location with coordinates
@@ -145,19 +158,6 @@ components:
           type: string
         serialNumber:
           type: string
-    AssetList:
-      type: object
-      properties:
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Asset'
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2
