@@ -55,30 +55,15 @@ paths:
                 $ref: '#/components/schemas/WorkOrderList'
 components:
   schemas:
-    Location:
+    WorkOrderList:
       type: object
-      description: CIM Location with coordinates
       properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        addressGeneral:
-          type: string
-        positionPoints:
+        workOrders:
           type: array
           items:
-            type: object
-            properties:
-              sequenceNumber:
-                type: integer
-              xPosition:
-                type: string
-                description: Longitude
-              yPosition:
-                type: string
-                description: Latitude
+            $ref: '#/components/schemas/WorkOrder'
+        total:
+          type: integer
     WorkOrder:
       type: object
       description: CIM Work – a work order for utility field operations
@@ -120,15 +105,30 @@ components:
           $ref: '#/components/schemas/Location'
         assignedCrew:
           type: string
-    WorkOrderList:
+    Location:
       type: object
+      description: CIM Location with coordinates
       properties:
-        workOrders:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
           type: array
           items:
-            $ref: '#/components/schemas/WorkOrder'
-        total:
-          type: integer
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
   securitySchemes:
     OAuth2:
       type: oauth2

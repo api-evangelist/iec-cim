@@ -82,15 +82,6 @@ paths:
           description: Outage not found
 components:
   schemas:
-    OutageList:
-      type: object
-      properties:
-        outages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Outage'
-        total:
-          type: integer
     AssetRef:
       type: object
       properties:
@@ -156,6 +147,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AssetRef'
+    OutageList:
+      type: object
+      properties:
+        outages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outage'
+        total:
+          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2

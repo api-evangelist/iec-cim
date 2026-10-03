@@ -87,6 +87,40 @@ paths:
           description: Asset not found
 components:
   schemas:
+    Asset:
+      type: object
+      description: CIM IdentifiedObject representing a distribution network asset
+      properties:
+        mRID:
+          type: string
+          format: uuid
+          description: Master Resource Identifier (CIM UUID)
+        name:
+          type: string
+          description: Asset name
+        aliasName:
+          type: string
+        description:
+          type: string
+        assetType:
+          type: string
+          description: CIM asset type class name
+        location:
+          $ref: '#/components/schemas/Location'
+        inService:
+          type: boolean
+        installationDate:
+          type: string
+          format: date
+        ratedVoltage:
+          type: number
+          description: Rated voltage in volts
+        manufacturer:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
     AssetList:
       type: object
       properties:
@@ -124,40 +158,6 @@ components:
               yPosition:
                 type: string
                 description: Latitude
-    Asset:
-      type: object
-      description: CIM IdentifiedObject representing a distribution network asset
-      properties:
-        mRID:
-          type: string
-          format: uuid
-          description: Master Resource Identifier (CIM UUID)
-        name:
-          type: string
-          description: Asset name
-        aliasName:
-          type: string
-        description:
-          type: string
-        assetType:
-          type: string
-          description: CIM asset type class name
-        location:
-          $ref: '#/components/schemas/Location'
-        inService:
-          type: boolean
-        installationDate:
-          type: string
-          format: date
-        ratedVoltage:
-          type: number
-          description: Rated voltage in volts
-        manufacturer:
-          type: string
-        model:
-          type: string
-        serialNumber:
-          type: string
   securitySchemes:
     OAuth2:
       type: oauth2

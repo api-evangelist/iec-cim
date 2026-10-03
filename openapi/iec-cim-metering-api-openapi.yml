@@ -120,6 +120,52 @@ components:
               yPosition:
                 type: string
                 description: Latitude
+    MeterReading:
+      type: object
+      description: CIM MeterReading – a set of readings from a meter for a time period
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        meterMRID:
+          type: string
+          format: uuid
+        readingType:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+        unit:
+          type: string
+          description: Unit of measure (kWh, kW, V, A)
+        multiplier:
+          type: string
+          description: Metric multiplier (k, M, G, etc.)
+        quality:
+          type: string
+          enum:
+          - ACTUAL
+          - ESTIMATED
+          - SUBSTITUTED
+          - INTERPOLATED
+    MeterReadingList:
+      type: object
+      properties:
+        meterMRID:
+          type: string
+          format: uuid
+        readings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeterReading'
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
     Meter:
       type: object
       description: CIM Meter – an AMI or electromechanical meter endpoint
@@ -157,22 +203,6 @@ components:
         lastCommunication:
           type: string
           format: date-time
-    MeterReadingList:
-      type: object
-      properties:
-        meterMRID:
-          type: string
-          format: uuid
-        readings:
-          type: array
-          items:
-            $ref: '#/components/schemas/MeterReading'
-        startTime:
-          type: string
-          format: date-time
-        endTime:
-          type: string
-          format: date-time
     MeterList:
       type: object
       properties:
@@ -200,36 +230,6 @@ components:
           - HEAT
         phaseCode:
           type: string
-    MeterReading:
-      type: object
-      description: CIM MeterReading – a set of readings from a meter for a time period
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        meterMRID:
-          type: string
-          format: uuid
-        readingType:
-          type: string
-        timeStamp:
-          type: string
-          format: date-time
-        value:
-          type: number
-        unit:
-          type: string
-          description: Unit of measure (kWh, kW, V, A)
-        multiplier:
-          type: string
-          description: Metric multiplier (k, M, G, etc.)
-        quality:
-          type: string
-          enum:
-          - ACTUAL
-          - ESTIMATED
-          - SUBSTITUTED
-          - INTERPOLATED
   securitySchemes:
     OAuth2:
       type: oauth2
