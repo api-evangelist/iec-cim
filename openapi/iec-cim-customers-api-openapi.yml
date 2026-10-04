@@ -50,30 +50,6 @@ paths:
                 $ref: '#/components/schemas/CustomerList'
 components:
   schemas:
-    Location:
-      type: object
-      description: CIM Location with coordinates
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        addressGeneral:
-          type: string
-        positionPoints:
-          type: array
-          items:
-            type: object
-            properties:
-              sequenceNumber:
-                type: integer
-              xPosition:
-                type: string
-                description: Longitude
-              yPosition:
-                type: string
-                description: Latitude
     Customer:
       type: object
       description: CIM Customer – utility customer record
@@ -98,6 +74,30 @@ components:
           type: string
         phone:
           type: string
+    Location:
+      type: object
+      description: CIM Location with coordinates
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
     CustomerList:
       type: object
       properties:
