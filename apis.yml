@@ -140,6 +140,9 @@ apis:
   - type: Reference
     url: https://cimug.ucaiug.org/
 common:
+- type: CapabilityMap
+  url: capabilities/iec-cim-capability-edges.yml
+  name: Iec Cim Business Capability Map
 - type: Website
   url: https://iec.ch
 - type: AgenticAccess
