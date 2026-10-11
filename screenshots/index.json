@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "iec-cim",
+    "captured_at": "2026-10-11T190428",
+    "source_url": "https://iec.ch",
+    "source_type": "Website",
+    "file": "iec-cim-2026-10-11T190428.png",
+    "bytes": 756523,
+    "capture": "playwright-local"
+  }
+]
