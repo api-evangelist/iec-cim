@@ -87,30 +87,6 @@ paths:
           description: Asset not found
 components:
   schemas:
-    Location:
-      type: object
-      description: CIM Location with coordinates
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        addressGeneral:
-          type: string
-        positionPoints:
-          type: array
-          items:
-            type: object
-            properties:
-              sequenceNumber:
-                type: integer
-              xPosition:
-                type: string
-                description: Longitude
-              yPosition:
-                type: string
-                description: Latitude
     Asset:
       type: object
       description: CIM IdentifiedObject representing a distribution network asset
@@ -145,6 +121,30 @@ components:
           type: string
         serialNumber:
           type: string
+    Location:
+      type: object
+      description: CIM Location with coordinates
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
     AssetList:
       type: object
       properties:

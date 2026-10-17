@@ -96,30 +96,6 @@ paths:
           description: Meter not found
 components:
   schemas:
-    Location:
-      type: object
-      description: CIM Location with coordinates
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        addressGeneral:
-          type: string
-        positionPoints:
-          type: array
-          items:
-            type: object
-            properties:
-              sequenceNumber:
-                type: integer
-              xPosition:
-                type: string
-                description: Longitude
-              yPosition:
-                type: string
-                description: Latitude
     MeterList:
       type: object
       properties:
@@ -145,54 +121,30 @@ components:
         endTime:
           type: string
           format: date-time
-    MeterReading:
+    Location:
       type: object
-      description: CIM MeterReading – a set of readings from a meter for a time period
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        meterMRID:
-          type: string
-          format: uuid
-        readingType:
-          type: string
-        timeStamp:
-          type: string
-          format: date-time
-        value:
-          type: number
-        unit:
-          type: string
-          description: Unit of measure (kWh, kW, V, A)
-        multiplier:
-          type: string
-          description: Metric multiplier (k, M, G, etc.)
-        quality:
-          type: string
-          enum:
-          - ACTUAL
-          - ESTIMATED
-          - SUBSTITUTED
-          - INTERPOLATED
-    UsagePoint:
-      type: object
-      description: CIM UsagePoint – point of delivery for a customer
+      description: CIM Location with coordinates
       properties:
         mRID:
           type: string
           format: uuid
         name:
           type: string
-        serviceKind:
+        addressGeneral:
           type: string
-          enum:
-          - ELECTRICITY
-          - GAS
-          - WATER
-          - HEAT
-        phaseCode:
-          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
     Meter:
       type: object
       description: CIM Meter – an AMI or electromechanical meter endpoint
@@ -230,6 +182,54 @@ components:
         lastCommunication:
           type: string
           format: date-time
+    UsagePoint:
+      type: object
+      description: CIM UsagePoint – point of delivery for a customer
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        serviceKind:
+          type: string
+          enum:
+          - ELECTRICITY
+          - GAS
+          - WATER
+          - HEAT
+        phaseCode:
+          type: string
+    MeterReading:
+      type: object
+      description: CIM MeterReading – a set of readings from a meter for a time period
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        meterMRID:
+          type: string
+          format: uuid
+        readingType:
+          type: string
+        timeStamp:
+          type: string
+          format: date-time
+        value:
+          type: number
+        unit:
+          type: string
+          description: Unit of measure (kWh, kW, V, A)
+        multiplier:
+          type: string
+          description: Metric multiplier (k, M, G, etc.)
+        quality:
+          type: string
+          enum:
+          - ACTUAL
+          - ESTIMATED
+          - SUBSTITUTED
+          - INTERPOLATED
   securitySchemes:
     OAuth2:
       type: oauth2

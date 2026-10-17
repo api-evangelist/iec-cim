@@ -116,6 +116,15 @@ components:
               yPosition:
                 type: string
                 description: Latitude
+    OutageList:
+      type: object
+      properties:
+        outages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outage'
+        total:
+          type: integer
     Outage:
       type: object
       description: CIM Outage event
@@ -147,15 +156,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AssetRef'
-    OutageList:
-      type: object
-      properties:
-        outages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Outage'
-        total:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2

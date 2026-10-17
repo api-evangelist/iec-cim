@@ -55,6 +55,39 @@ paths:
                 $ref: '#/components/schemas/WorkOrderList'
 components:
   schemas:
+    WorkOrderList:
+      type: object
+      properties:
+        workOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkOrder'
+        total:
+          type: integer
+    Location:
+      type: object
+      description: CIM Location with coordinates
+      properties:
+        mRID:
+          type: string
+          format: uuid
+        name:
+          type: string
+        addressGeneral:
+          type: string
+        positionPoints:
+          type: array
+          items:
+            type: object
+            properties:
+              sequenceNumber:
+                type: integer
+              xPosition:
+                type: string
+                description: Longitude
+              yPosition:
+                type: string
+                description: Latitude
     WorkOrder:
       type: object
       description: CIM Work – a work order for utility field operations
@@ -96,39 +129,6 @@ components:
           $ref: '#/components/schemas/Location'
         assignedCrew:
           type: string
-    Location:
-      type: object
-      description: CIM Location with coordinates
-      properties:
-        mRID:
-          type: string
-          format: uuid
-        name:
-          type: string
-        addressGeneral:
-          type: string
-        positionPoints:
-          type: array
-          items:
-            type: object
-            properties:
-              sequenceNumber:
-                type: integer
-              xPosition:
-                type: string
-                description: Longitude
-              yPosition:
-                type: string
-                description: Latitude
-    WorkOrderList:
-      type: object
-      properties:
-        workOrders:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkOrder'
-        total:
-          type: integer
   securitySchemes:
     OAuth2:
       type: oauth2
