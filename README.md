@@ -1,4 +1,4 @@
-# IEC CIM - Common Information Model (iec-cim)
+# Iec Cim
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,89 +64,149 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-IEC Common Information Model (CIM) is an international standard developed by the International Electrotechnical Commission for representing electrical power system data and facilitating data exchange between applications. The IEC 61968 and IEC 61970 series define data models and interfaces for distribution management, energy management, and advanced metering infrastructure across electric utility systems.
+IEC Common Information Model (CIM) is an international standard developed by the International Electrotechnical Commission for representing electrical power system data and facilitating data exchange between applications.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/iec-cim/refs/heads/main/apis.yml)
+**Areas:** Energy · Utilities · Metering
 
-## Scope
+## Iec Cim on APIs.io
 
-- **Type:** Standard
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Iec Cim is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/iec-cim/](https://apis.io/providers/iec-cim/)** — or go straight to one of the APIs or properties below.
 
-## Tags:
+### APIs (7)
 
- - AMI, CIM, Energy, Smart Grid, Smart Meter, Utilities, XML
+- [IEC CIM 61970 Energy Management API](https://apis.io/apis/iec-cim/iec-cim-61970-ems-api/) — The IEC CIM 61970 standard defines the Common Information Model for energy management systems (EMS), enabling data exchange for power system network models,…
+- [IEC CIM AMI Smart Meter API](https://apis.io/apis/iec-cim/iec-cim-ami-smart-meter-api/) — The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end systems provide smart meter readings, interval data, usage points, and demand…
+- [iec-cim Customers API](https://apis.io/apis/iec-cim/iec-cim-customers-api/) — Customer service agreements and locations
+- [iec-cim Metering API](https://apis.io/apis/iec-cim/iec-cim-metering-api/) — Meters and interval readings (IEC 61968-9 AMI)
+- [iec-cim Network Assets API](https://apis.io/apis/iec-cim/iec-cim-network-assets-api/) — Distribution network equipment – transformers, switches, lines, conductors
+- [iec-cim Outages API](https://apis.io/apis/iec-cim/iec-cim-outages-api/) — Outage events and management
+- [iec-cim Work Orders API](https://apis.io/apis/iec-cim/iec-cim-work-orders-api/) — Maintenance and construction work orders
 
-## Timestamps
+### Published properties
 
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### IEC CIM 61968 Distribution Management API
-The IEC CIM 61968 standard defines interfaces for distribution management systems (DMS), enabling integration of outage management, network management, meter reading, and work management systems using CIM XML message exchange.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
+- [Iec Cim Agentic Access](https://apis.io/agentic-access/iec-cim/iec-cim-agentic-access/)
 
-**Base URL:** https://ami-gateway.utility.example.com/cim/61968
+#### JSON Schema (1)
 
-#### Tags:
+The data models the API reads and writes.
 
- - CIM, Distribution, Energy, Smart Grid, Utilities, XML
+- [IEC CIM Asset](https://apis.io/schemas/iec-cim/iec-cim-asset/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://www.iec.ch/)
-- [Reference](https://cimug.ucaiug.org/)
-- [OpenAPI](openapi/iec-cim-61968-distribution-openapi.yml)
+Linked-data contexts for the provider's vocabulary.
 
-### IEC CIM 61970 Energy Management API
-The IEC CIM 61970 standard defines the Common Information Model for energy management systems (EMS), enabling data exchange for power system network models, measurements, and topology across transmission utility systems.
+- [Iec Cim Context](https://apis.io/jsonld/iec-cim/iec-cim-context/)
 
-**Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
+#### Collections (6)
 
-**Base URL:** https://ems-gateway.utility.example.com/cim/61970
+Postman and Open Collection request collections.
 
-#### Tags:
+- [IEC CIM 61968 Distribution Management API](https://apis.io/collections/iec-cim/open-iec-cim-61968-distribution/)
+- [IEC CIM 61968 Distribution Management Customers API](https://apis.io/collections/iec-cim/open-iec-cim-customers-api/)
+- [IEC CIM 61968 Distribution Management Customers Metering API](https://apis.io/collections/iec-cim/open-iec-cim-metering-api/)
+- [IEC CIM 61968 Distribution Management Customers Network Assets API](https://apis.io/collections/iec-cim/open-iec-cim-network-assets-api/)
+- [IEC CIM 61968 Distribution Management Customers Outages API](https://apis.io/collections/iec-cim/open-iec-cim-outages-api/)
+- [IEC CIM 61968 Distribution Management Customers Work Orders API](https://apis.io/collections/iec-cim/open-iec-cim-work-orders-api/)
 
- - CIM, EMS, Energy, Transmission, Utilities, XML
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://www.iec.ch/)
-- [Reference](https://cimug.ucaiug.org/)
+- [Iec Cim — jsonschema rules](https://apis.io/rules/iec-cim/iec-cim-jsonschema-spectral-rules/)
 
-### IEC CIM AMI Smart Meter API
-The IEC CIM AMI (Advanced Metering Infrastructure) APIs from AMI head-end systems provide smart meter readings, interval data, usage points, and demand response signals using CIM XML data models compliant with IEC 61968-9 for utility grid operations.
+#### Security (2)
 
-**Human URL:** [https://www.iec.ch/](https://www.iec.ch/)
+Authentication, trust centre, and vulnerability disclosure.
 
-**Base URL:** https://ami-gateway.utility.example.com/cim
+- [Iec Cim Authentication](https://apis.io/security/iec-cim/iec-cim-authentication/)
+- [Iec Cim Domain Security](https://apis.io/security/iec-cim/iec-cim-domain-security/)
 
-#### Tags:
+#### OAuth scopes (1)
 
- - AMI, CIM, Energy, Metering, Smart Meter, Utilities, XML
+The permissions the API asks for.
 
-#### Properties
+- [Iec Cim Scopes](https://apis.io/scopes/iec-cim/iec-cim-scopes/)
 
-- [Documentation](https://www.iec.ch/)
-- [Reference](https://cimug.ucaiug.org/)
+#### Plans and pricing (1)
 
-## Common Properties
+Published plans, tiers and prices.
 
-- [Portal](https://www.iec.ch/)
-- [Documentation](https://www.iec.ch/)
-- [Getting Started](https://cimug.ucaiug.org/)
-- [Website](https://www.iec.ch/)
-- [GitHub Organization](https://github.com/cimug-org)
-- [Developer Tools](https://github.com/cimug-org)
-- [OpenAPI](openapi/iec-cim-61968-distribution-openapi.yml)
-- [JSONSchema](json-schema/iec-cim-asset-schema.json)
-- [JSONLDContext](json-ld/iec-cim-context.jsonld)
+- [Iec Cim Plans Pricing](https://apis.io/plans/iec-cim/iec-cim-plans-pricing/)
 
-## Maintainers
+#### Rate limits (1)
 
-**FN:** Kin Lane
+Published request limits.
 
-**Email:** kin@apievangelist.com
+- [Iec Cim Rate Limits](https://apis.io/rate-limits/iec-cim/iec-cim-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Iec Cim Finops](https://apis.io/finops/iec-cim/iec-cim-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://iec.ch)
+
+## API Evangelist rating
+
+**Kin Score 30.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 51.8 |
+| Contract quality | 55.2 |
+| Contract governance | 9.8 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 24.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.9** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/iec-cim/](https://apis.io/providers/iec-cim/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Iec Cim: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/iec-cim/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
